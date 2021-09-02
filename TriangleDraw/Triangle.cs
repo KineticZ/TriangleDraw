@@ -85,44 +85,34 @@ namespace TriangleDraw
         }
         private bool IsInTriangle(Point pointToCheck)
         {
-            int x1 = Math.Abs(points[0].X - points[1].X);
-            int y1 = Math.Abs(points[0].Y - points[1].Y);
+            int x1 = (points[1].X - points[0].X);
+            int y1 = (points[1].Y - points[0].Y);
 
-            int x2 = Math.Abs(pointToCheck.X - points[0].X);
-            int y2 = Math.Abs(pointToCheck.Y - points[0].Y);
+            int x2 = (pointToCheck.X - points[0].X);
+            int y2 = (pointToCheck.Y - points[0].Y);
 
             int area1 = (DotProduct(x1, y1, x2, y2)) / 2;
-            if (area1 < 0) return false;
+           // if (area1 < 0) return false;
 
-            x1 = Math.Abs(pointToCheck.X - points[1].X);
-            y1 = Math.Abs(pointToCheck.Y - points[1].Y);
+            x1 = (points[2].X - points[1].X);
+            y1 = (points[2].Y - points[1].Y);
 
-            x2 = Math.Abs(points[1].X - points[2].X);
-            y2 = Math.Abs(points[1].Y - points[2].Y);
-
-            // should only be negative when starting out.
+            x2 = (pointToCheck.X - points[1].X);
+            y2 = (pointToCheck.Y - points[1].Y);    
+                      
             int area2 = (DotProduct(x1, y1, x2, y2)) / 2;
-            //need to check and fix bug ******************************************
-            if (area2 < 0 && pointToCheck.X > points[0].X) return false;
+          
+            x1 = (points[0].X - points[2].X);
+            y1 = (points[0].Y - points[2].Y);
 
-            x1 = Math.Abs(points[0].X - points[2].X);
-            y1 = Math.Abs(points[0].Y - points[2].Y);
-
-            x2 = Math.Abs(pointToCheck.X - points[2].X);
-            y2 = Math.Abs(pointToCheck.Y - points[2].Y);
+            x2 = (pointToCheck.X - points[2].X);
+            y2 = (pointToCheck.Y - points[2].Y);
 
             int area3 = (DotProduct(x1, y1, x2, y2)) / 2;
 
             if (area3 < 0) return false;
 
             decimal p = (area1 + area2 + area3) / (decimal)normalArea;
-
-
-            //debugging
-            if (pointToCheck.X > 190 && pointToCheck.Y == 0)
-            {
-                ;
-            }
 
             if (p <= 1 && p >= 0)
             {

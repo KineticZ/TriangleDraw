@@ -29,8 +29,8 @@ namespace TriangleDraw
 
             int width = 200;
             int height = 200;
-            int x = canvas.Width / 2 - width / 2;
-            int y = canvas.Height / 2 - height / 2;
+            int x = 0;// canvas.Width / 2 - width / 2;
+            int y = 0;// canvas.Height / 2 - height / 2;
 
             Point[] points = new Point[3] 
             { 
@@ -46,10 +46,10 @@ namespace TriangleDraw
             Point3XTextBox.Text = points[2].X.ToString();
             Point3YTextBox.Text = points[2].Y.ToString();
 
-            //triangle = new Triangle(pointA: points[0],
-            //                        pointB: points[1],
-            //                        pointC: points[2], color: Color.Red);
-            triangle = new Triangle(pointA: new Point(0, 0), pointB: new Point(190, 0), pointC: new Point(200, 200), color: Color.Red);
+            triangle = new Triangle(pointA: points[0],
+                                    pointB: points[1],
+                                    pointC: points[2], color: Color.Red);
+//            triangle = new Triangle(pointA: new Point(0, 0), pointB: new Point(190, 0), pointC: new Point(200, 200), color: Color.Red);
             Draw();
         }
 
